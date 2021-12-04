@@ -20,4 +20,28 @@ for reading in readings_ints:
             larger_readings += 1
         index += 1
 
-print(larger_readings)
+print("Number of readings that is larger than the previous: " + str(larger_readings))
+
+# set up new indeces to provide 3-pair slices; also, new count of larger measures
+threestart_index = 0
+threeend_index = 3
+larger_threesomes = 0
+
+# set up a loop that will continue collecting pairs of three and compare them
+while True:
+    A = 0
+    B = 0
+    # compute A and advance the indeces, also break here if end of list is reached
+    for threesome_reading in readings_ints[threestart_index:threeend_index]:
+        A += threesome_reading
+    threestart_index += 1
+    threeend_index += 1
+    if threeend_index == 2001:
+        break
+    # compute B and compare if A is smaller than B, then count if true
+    for three_some_reading2 in readings_ints[threestart_index:threeend_index]:
+        B += three_some_reading2
+    if B > A:
+        larger_threesomes += 1
+
+print("Number of three-pair measures that are larger than the previous three: " + str(larger_threesomes))
